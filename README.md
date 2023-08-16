@@ -4,7 +4,7 @@
 
 <img src="figures/clusters.png" align="center" alt="" width="600" />
 
-Equipped with a dataset of baseline covariates $(X_i)_{1\leq i\leq n}$ and predictions $(Y_i)_{1\leq i\leq n}$ from a conditional average treatment effect (CATE) function, the *clusterITE* library lets you estimate the function (i.e., gating network) maping observations to their probabilities of belonging to clusters $1,\dots,K$. The *clusterITE* library, lets you conveniently pick the optimal number of cluster $K$ via cross-validation.  
+Equipped with a dataset of baseline covariates $\``(X_i)_{1\leq i\leq n}`$ and predictions $(Y_i)_{1\leq i\leq n}$ from a conditional average treatment effect (CATE) function, the *clusterITE* library lets you estimate the function (i.e., gating network) maping observations to their probabilities of belonging to clusters $1,\dots,K$. The *clusterITE* library, lets you conveniently pick the optimal number of cluster $K$ via cross-validation.  
 
 ### 1. Specify a model architecture
 ```python
