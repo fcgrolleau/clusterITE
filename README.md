@@ -8,6 +8,10 @@ Equipped with a dataset of baseline covariates $`(X_i)_{1\leq i\leq n}`$ and pre
 
 Our model and fitting algorithm are described <a href="https://fcgrolleau.github.io/clusterITE/Mixture_of_ITEs.pdf">here</a>.
 
+```python
+from clusterITE import *
+```
+
 ### 1. Specify a model architecture
 ```python
 # For the gating network, define any Keras/Tensorflow architecture of your choice
