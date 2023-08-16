@@ -1,30 +1,18 @@
-# %% [markdown]
-# # Mixture of Individualized Treatment Effects
-# Justification for the appraoch is available [here](https://fcgrolleau.github.io/clusterITE/Mixture_of_ITEs.pdf).
-
-# %% [markdown]
-# ### Generate Data
-
-# %%
+# Mixture of Individualized Treatment Effects
+# Justification for the appraoch is available at https://fcgrolleau.github.io/clusterITE/Mixture_of_ITEs.pdf
 import numpy as np
 import scipy.stats as stats
 import pandas as pd
 import matplotlib.pyplot as plt
-
-# For the experts we can use random forests
+from sklearn.metrics import mean_squared_error
 from sklearn.ensemble import RandomForestRegressor
-
-# For simplicity in this parametric simulation, we will use linear regression
 from sklearn.linear_model import LinearRegression
-
-# For the gating network, deep learning libraries are more convenient
-import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Sequential 
 from tensorflow.keras.layers import Dense
 from keras.callbacks import EarlyStopping
 
-# Instantiate our gating network
+# Define a default gating network
 def tf_model(n_clusters):
     model = Sequential()
     model.add(Dense(n_clusters, use_bias=True, activation='softmax'))
