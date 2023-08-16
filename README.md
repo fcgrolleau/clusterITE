@@ -56,4 +56,6 @@ final_model.gating_net.predict(X_test)
 mean_squared_error(final_model.predict(X_test), y_test)
 ````
 
+See minimal implementations in <a href="https://nbviewer.org/github/fcgrolleau/clusterITE/blob/main/minimal.ipynb">minimal.ipynb</a>.
+
 See more details and a toy simulation in <a href="https://nbviewer.org/github/fcgrolleau/clusterITE/blob/main/clusterITE.ipynb">clusterITE.ipynb</a>.
