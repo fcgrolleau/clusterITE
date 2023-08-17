@@ -4,7 +4,7 @@
 
 <img src="figures/clusters.png" align="center" alt="" width="800">
 
-Equipped with a dataset of baseline covariates $`(X_i)_{1\leq i\leq n}`$ and predictions $(Y_i)_{1\leq i\leq n}$ from an estimated individualized treatment effect (ITE, aka CATE) function, the *clusterITE* library lets you estimate the function (i.e., gating network) mapping observations to their probabilities of belonging to clusters $1,\dots,K$ of similar (true) ITE function. The *clusterITE* library, lets you conveniently pick $K$, the optimal number of cluster, via cross-validation. 
+Equipped with a dataset of baseline covariates $`(X_i)_{1\leq i\leq n}`$ and predictions $(Y_i)_{1\leq i\leq n}$ from an estimated individualized treatment effect (ITE, aka CATE) function, the *clusterITE* library lets you estimate the function (i.e., gating network) mapping observations to their probabilities of belonging to clusters $1,\dots,K$ of similar (true) ITE function. The *clusterITE* library lets you conveniently pick $K$, the optimal number of cluster, via cross-validation. 
 
 Our model and fitting algorithm are described <a href="https://fcgrolleau.github.io/clusterITE/Mixture_of_ITEs.pdf">here</a>.
 
