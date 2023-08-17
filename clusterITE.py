@@ -154,6 +154,7 @@ class ClusterIte():
             verbose (bool): verbose passed from the Keras predict function
         """
         if self.K == 1:
+            print('Only one cluster was used and therefore the probabilities of belonging to that cluster are all 1')
             return np.ones(len(X))[:, np.newaxis]
         else:
             return self.gating_net.predict(X, verbose=verbose)
