@@ -48,7 +48,7 @@ cv_model.plot()
 # Instanciate a ClusterIte model with the optimal K estimated from cross-validation
 final_model = ClusterIte(K=cv_model.best_K, **base_learners)
 
-# Instanciate this model on all the training data
+# Fit this model on all the training data
 final_model.fit(X, y)
 ```
 
