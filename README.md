@@ -18,9 +18,11 @@ from clusterITE import *
 def custom_tf_model(n_clusters):
     model = Sequential()
     ## Write your favorite architecture here...
+    model.add(Dense(10, use_bias=True, activation='relu'))
+    model.add(Dense(10, use_bias=True, activation='relu'))
     ## ... but make sure to finish the network like so
     model.add(Dense(n_clusters, use_bias=True, activation='softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
+    model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
     return model
 
 # For the expert networks, define any sklearn architecture of your choice
@@ -54,12 +56,12 @@ final_model.fit(X, y)
 ```python
 # Use the gating network of your trained model to predict the probabilities 
 # of belonging to clusters 1,...,K for unseen observations
-final_model.gating_net.predict(X_test)
+final_model.gate_predict(X_test)
 
 # Evaluate the MSE of the final model on unseen data
 mean_squared_error(final_model.predict(X_test), y_test)
 ````
 
-See minimal implementations in <a href="https://nbviewer.org/github/fcgrolleau/clusterITE/blob/main/minimal.ipynb">minimal.ipynb</a>.
+See implementation details in <a href="https://nbviewer.org/github/fcgrolleau/clusterITE/blob/main/minimal.ipynb">minimal.ipynb</a>.
 
 See more details and a toy simulation in <a href="https://nbviewer.org/github/fcgrolleau/clusterITE/blob/main/clusterITE.ipynb">clusterITE.ipynb</a>.
