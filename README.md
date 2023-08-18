@@ -1,5 +1,5 @@
 # clusterITE
-[![Python](https://img.shields.io/static/v1?label=made%20with&message=Python&color=blue&style=for-the-badge&logo=Python&logoColor=white)](#)
+[![Python 3.10.11](https://img.shields.io/badge/Python-3.10.11-blue.svg)](https://www.Python.org) 
 [![license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/fcgrolleau/clusterITE/blob/main/LICENSE)
 
 <img src="figures/clusters.png" align="center" alt="" width="800">
