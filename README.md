@@ -12,7 +12,14 @@ where $C_1,\dots,C_K$ denote binary identifiers for the cluster $k=1,\dots,K$ an
 
 Our model and fitting algorithm are described in more details <a href="https://fcgrolleau.github.io/clusterITE/Mixture_of_ITEs.pdf">here</a>.
 
+### Installation
 ```python
+# download the library
+import requests
+url = 'https://raw.githubusercontent.com/fcgrolleau/clusterITE/main/clusterITE.py'
+open('clusterITE.py', 'wb').write(requests.get(url).content)
+
+# load it
 from clusterITE import *
 ```
 
