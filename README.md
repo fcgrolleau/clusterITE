@@ -1,18 +1,30 @@
 # clusterITE
-[![Python](https://img.shields.io/static/v1?label=made%20with&message=Python&color=blue&style=for-the-badge&logo=Python&logoColor=white)](#)
 [![license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/fcgrolleau/clusterITE/blob/main/LICENSE)
+[![Python 3.10.11](https://img.shields.io/badge/Python-3.10.11-blue.svg)](https://www.Python.org) 
 
 <img src="figures/clusters.png" align="center" alt="" width="800">
 
-Equipped with a dataset of baseline covariates $`(X_i)_{1\leq i\leq n}`$ and predictions $(Y_i)_{1\leq i\leq n}$ from an estimated individualized treatment effect (ITE, aka CATE) function, the *clusterITE* library lets you estimate the function (i.e., gating network) mapping observations to their probabilities of belonging to clusters $1,\dots,K$ of similar (true) ITE function. The *clusterITE* library lets you conveniently pick $K$, the optimal number of cluster, via cross-validation. 
+Equipped with a dataset of baseline covariates $`(X_i)_{1\leq i\leq n}`$ and predictions $(Y_i)_{1\leq i\leq n}$ from an estimated individualized treatment effect (ITE, aka CATE) function, the *clusterITE* library lets you estimate the function (i.e., gating network) mapping observations to their probabilities of belonging to each cluster, $1,\dots,K$, of individuals with a similar ITE function. The *clusterITE* library lets you conveniently pick $K$, the optimal number of clusters, via cross-validation. 
 
-Our model and fitting algorithm are described <a href="https://fcgrolleau.github.io/clusterITE/Mixture_of_ITEs.pdf">here</a>.
+In essence, *clusterITE* uses an EM-algorithm to fit the non-parametric mixture model:
+$$\mathbb{E}[Y|X]=\sum_{k=1}^K \mathbb{P}(C_k=1|X) \mathbb{E}[Y|X, C_k=1]$$
+where $C_1,\dots,C_K$ denote latent binary identifiers for the cluster $k=1,\dots,K$ an observation belongs to.
 
+Our model and fitting algorithm are described in more details <a href="https://fcgrolleau.github.io/clusterITE/Mixture_of_ITEs.pdf">here</a>.
+
+## Installation
 ```python
+# download the library
+import requests
+url = 'https://raw.githubusercontent.com/fcgrolleau/clusterITE/main/clusterITE.py'
+open('clusterITE.py', 'wb').write(requests.get(url).content)
+
+# load it
 from clusterITE import *
 ```
 
-### 1. Specify a model architecture
+## Implementation
+#### 1. Specify a model architecture
 ```python
 # For the gating network, define any Keras/Tensorflow architecture of your choice
 def custom_tf_model(n_clusters):
@@ -30,7 +42,7 @@ def custom_tf_model(n_clusters):
 base_learners = {'experts': RandomForestRegressor(n_estimators=100, max_depth=10, max_features=10),
                  'gating_net': custom_tf_model}
 ```
-### 2. Pick the optimal number of cluster $K$ via cross-validation
+#### 2. Pick the optimal number of clusters $K$ via cross-validation
 ```python
 # Instanciate a ClusterIte model with 5 fold cross-validation
 cv_model = ClusterIte_cv(nb_folds=5, **base_learners)
@@ -43,7 +55,7 @@ cv_model.plot()
 ```
  <img src="figures/cv.png" align="center" alt="" width="300" />
 
-### 3. Train a clusterITE model on all the data
+#### 3. Train a clusterITE model on all the data
 ```python
 # Instanciate a ClusterIte model with the optimal K estimated from cross-validation
 final_model = ClusterIte(K=cv_model.best_K, **base_learners)
@@ -52,7 +64,7 @@ final_model = ClusterIte(K=cv_model.best_K, **base_learners)
 final_model.fit(X, y)
 ```
 
-### 4. Use your fitted model for cluster prediction and evaluation on unseen data
+#### 4. Use your fitted model for cluster prediction and evaluation on unseen data
 ```python
 # Use the gating network of your trained model to predict the probabilities 
 # of belonging to clusters 1,...,K for unseen observations
