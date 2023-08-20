@@ -15,8 +15,8 @@ Our model and fitting algorithm are described in more details <a href="https://f
 ## Installation
 ```python
 # download the library
-import requests
 url = 'https://raw.githubusercontent.com/fcgrolleau/clusterITE/main/clusterITE.py'
+import requests
 open('clusterITE.py', 'wb').write(requests.get(url).content)
 
 # load it
