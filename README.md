@@ -4,11 +4,11 @@
 
 <img src="figures/clusters.png" align="center" alt="" width="800">
 
-Equipped with a dataset of baseline covariates $`(X_i)_{1\leq i\leq n}`$ and predictions $(Y_i)_{1\leq i\leq n}$ from an estimated individualized treatment effect (ITE, aka CATE) function, the *clusterITE* library lets you estimate the function (i.e., gating network) mapping observations to their probabilities of belonging to each cluster, $1,\dots,K$, of individuals with a similar ITE function. The *clusterITE* library lets you conveniently pick $K$, the optimal number of clusters, via cross-validation. 
+Equipped with a dataset of baseline covariates $`(X_i)_{1\leq i\leq n}`$ and predictions $(Y_i)_{1\leq i\leq n}$ from an estimated individualized treatment effect (ITE, aka CATE) function, the *clusterITE* library lets you estimate the function (i.e., gating network) mapping observations to their probabilities of belonging to each cluster, $k=1,\dots,K$, of individuals with a similar ITE function. The *clusterITE* library lets you conveniently pick $K$, the optimal number of clusters, via cross-validation. 
 
 In essence, *clusterITE* uses an EM-algorithm to fit the non-parametric mixture model:
 $$\mathbb{E}[Y|X]=\sum_{k=1}^K \mathbb{P}(C_k=1|X) \mathbb{E}[Y|X, C_k=1]$$
-where $C_1,\dots,C_K$ denote latent binary identifiers for the cluster $k=1,\dots,K$ an observation belongs to.
+where $C_1,\dots,C_K$ denote latent binary identifiers for the cluster an observation belongs to.
 
 Our model and fitting algorithm are described in more details <a href="https://fcgrolleau.github.io/clusterITE/Mixture_of_ITEs.pdf">here</a>.
 
