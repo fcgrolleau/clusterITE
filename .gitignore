@@ -1,1 +1,5 @@
-Icon
+Icon
+
+__pycache__/
+*.pyc
+*.pyo
